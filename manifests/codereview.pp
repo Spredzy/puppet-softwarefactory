@@ -60,6 +60,10 @@ class softwarefactory::codereview (
     ldap_accountemailaddress => $ldap_account_emailaddress,
     ldap_accountsshusername  => $ldap_account_sshusername,
     ldap_password            => $ldap_manager_password,
+<<<<<<< HEAD
+=======
+    mysql_java_package       => 'openjdk-7-jdk'
+>>>>>>> f71d279... Initial Commit
   } ->
   gerrit::hook { 'patchset-created' :
     source => 'puppet:///modules/softwarefactory/codereview/hooks/patchset-created',
