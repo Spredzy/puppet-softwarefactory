@@ -1,0 +1,10 @@
+SET @ldap_addr="<%= @ldap_uri %>";
+SET @ldap_port="<%= @ldap_port %>";
+SET @ldap_tls="<%= @ldap_tls %>";
+SET @ldap_account_base="<%= @ldap_user_base %>,<%=@ldap_root_dn %>";
+SET @ldap_login_attr="<%= @ldap_login_attr %>";
+SET @ldap_username="<%= @ldap_manager_dn %>";
+SET @ldap_password="<%= @ldap_password %>";
+
+INSERT INTO settings (name, value, updated_on) VALUES ('rest_api_enabled','1', CURRENT_TIMESTAMP());
+INSERT INTO auth_sources (TYPE, NAME, HOST, PORT, BASE_DN, ATTR_LOGIN, ONTHEFLY_REGISTER, ACCOUNT, ACCOUNT_PASSWORD, TLS) VALUES ('AuthSourceLdap', 'LDAP Auth', @ldap_addr, @ldap_port, @ldap_account_base, @ldap_login_attr, '1', @ldap_username, @ldap_password, @ldap_tls);

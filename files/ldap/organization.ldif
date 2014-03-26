@@ -1,0 +1,5 @@
+dn: dc=example,dc=com
+dc: example
+o: My Blabla
+objectclass: organization
+objectclass: dcObject
