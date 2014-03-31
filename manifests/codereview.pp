@@ -32,6 +32,12 @@ class softwarefactory::codereview (
   $ldap_account_pattern      = '(&(objectClass=inetOrgPerson)(cn=\${username}))',
   $ldap_account_emailaddress = 'mail',
   $ldap_account_sshusername  = 'cn',
+  $ldap_account_memberfield  = 'memberOf',
+  $ldap_account_fullname     = 'displayName',
+  $ldap_group_base           = 'ou=Groups',
+  $ldap_group_name           = 'cn',
+  $ldap_group_pattern        = '(&(objectClass=organizationalRole)(cn=\${groupname}))',
+  $ldap_group_memberpattern  = '(|(roleOccupant=\${username})(gidNumber=\${gidNumber}))',
 ){
 
   include softwarefactory
@@ -59,11 +65,11 @@ class softwarefactory::codereview (
     ldap_accountpattern      => $ldap_account_pattern,
     ldap_accountemailaddress => $ldap_account_emailaddress,
     ldap_accountsshusername  => $ldap_account_sshusername,
+    ldap_groupbase           => "${ldap_group_base},${ldap_root_dn}",
+    ldap_grouppattern        => $ldap_group_pattern,
+    ldap_groupmemberpattern  => $ldap_group_memberpattern,
+    ldap_groupname           => $ldap_group_name,
     ldap_password            => $ldap_manager_password,
-<<<<<<< HEAD
-=======
-    mysql_java_package       => 'openjdk-7-jdk'
->>>>>>> f71d279... Initial Commit
   } ->
   gerrit::hook { 'patchset-created' :
     source => 'puppet:///modules/softwarefactory/codereview/hooks/patchset-created',

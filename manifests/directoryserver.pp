@@ -36,14 +36,26 @@ class softwarefactory::directoryserver (
   file {'/tmp/users.ldif' :
     source => 'puppet:///modules/softwarefactory/ldap/users.ldif',
   } ->
+  file {'/tmp/groups_ou.ldif' :
+    source => 'puppet:///modules/softwarefactory/ldap/groups_ou.ldif',
+  } ->
+  file {'/tmp/groups.ldif' :
+    source => 'puppet:///modules/softwarefactory/ldap/groups.ldif',
+  } ->
   exec { "ldapadd -x -D ${ldap_manager_dn} -w ${ldap_password} -f /tmp/organization.ldif" :
-    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'o: '"
+    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'objectClass: organization'"
   } ->
   exec { "ldapadd -x -D ${ldap_manager_dn} -w ${ldap_password} -f /tmp/users_ou.ldif" :
-    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'ou: '"
+    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'dn: ou=Users'"
   } ->
   exec { "ldapadd -x -D ${ldap_manager_dn} -w ${ldap_password} -f /tmp/users.ldif" :
-    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'mail: '"
+    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'objectClass: person'"
+  } ->
+  exec { "ldapadd -x -D ${ldap_manager_dn} -w ${ldap_password} -f /tmp/groups_ou.ldif" :
+    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'dn: ou=Groups'"
+  } ->
+  exec { "ldapadd -x -D ${ldap_manager_dn} -w ${ldap_password} -f /tmp/groups.ldif" :
+    unless => "ldapsearch -x -D ${ldap_manager_dn} -b ${ldap_root_dn} -w ${ldap_password} | grep 'objectClass: group'"
   }
 
 }

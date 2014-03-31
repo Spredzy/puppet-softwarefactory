@@ -1,5 +1,6 @@
 dn: cn=tristan.cacqueray,ou=Users,dc=example,dc=com
 cn: tristan.cacqueray
+displayName: Tristan Cacqueray
 objectClass: person
 sn: Demo user1
 userPassword: userpass
@@ -9,6 +10,7 @@ objectClass: inetOrgPerson
 dn: cn=fabien.boucher,ou=Users,dc=example,dc=com
 cn: fabien.boucher
 objectClass: person
+displayName: Fabien Boucher
 sn: Demo user2
 userPassword: userpass
 mail: fabien.boucher@enovance.com
@@ -18,6 +20,7 @@ dn: cn=christian.schwede,ou=Users,dc=example,dc=com
 cn: christian.schwede
 objectClass: person
 sn: Demo user3
+displayName: Christian Schwede
 userPassword: userpass
 mail: christian.schwede@enovance.com
 objectClass: inetOrgPerson
@@ -26,12 +29,14 @@ dn: cn=frederic.lepied,ou=Users,dc=example,dc=com
 cn: frederic.lepied
 objectClass: person
 sn: Demo user4
+displayName: Frederic Lepied
 userPassword: userpass
 mail: frederic.lepied@enovance.com
 objectClass: inetOrgPerson
 
 dn: cn=james.kulina,ou=Users,dc=example,dc=com
 cn: james.kulina
+displayName: James Kulina
 objectClass: person
 sn: Demo user5
 userPassword: userpass
@@ -40,6 +45,7 @@ objectClass: inetOrgPerson
 
 dn: cn=jenkins,ou=Users,dc=example,dc=com
 cn: jenkins
+displayName: Jenkins
 objectClass: person
 sn: Jenkins
 userPassword: userpass

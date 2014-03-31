@@ -1,0 +1,17 @@
+dn: cn=openstack,ou=Groups,dc=example,dc=com
+cn: openstack
+objectClass: organizationalRole
+roleOccupant: cn=fabien.boucher,dc=example,dc=com
+roleOccupant: cn=frederic.lepied,dc=example,dc=com
+
+dn: cn=gerrit,ou=Groups,dc=example,dc=com
+cn: gerrit
+objectClass: organizationalRole
+roleOccupant: cn=fabien.boucher,dc=example,dc=com
+roleOccupant: cn=tristan.cacqueray,dc=example,dc=com
+
+dn: cn=jenkins,ou=Groups,dc=example,dc=com
+cn: jenkins
+objectClass: organizationalRole
+roleOccupant: cn=tristan.cacqueray,dc=example,dc=com
+roleOccupant: cn=christian.schwede,dc=example,dc=com
