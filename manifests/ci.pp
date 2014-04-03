@@ -21,6 +21,7 @@ class softwarefactory::ci(
   $system_packages       = ['rubygems', 'rake', 'puppet-lint', 'python-pip'],
   $pip_packages          = ['flake8'],
   $gem_packages          = ['rspec-puppet', 'serverspec'],
+  $jenkins_plugins       = ['ssh-agent', 'scm-api', 'git', 'git-client', 'external-monitor-job', 'gerrit-trigger', 'matrix-auth', 'swarm', 'windows-slaves'],
 ) {
 
   include softwarefactory
@@ -43,6 +44,8 @@ class softwarefactory::ci(
   class {'jenkins' :
     lts                => true,
     configure_firewall => false,
+  }
+  jenkins::plugin {$jenkins_plugins :
   }
 
   file {'/var/lib/jenkins/config.xml' :
