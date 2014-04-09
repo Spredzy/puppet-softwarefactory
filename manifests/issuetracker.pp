@@ -35,6 +35,12 @@ class softwarefactory::issuetracker (
   }
 
   $packages = ['redmine', "redmine-${issuetracker_db_backend}"]
+
+  apt::source {'debian_backport' :
+    location => 'http://ftp.debian.org/debian',
+    release  => 'wheezy-backports',
+    repos    => 'main',
+  }  ->
   package {$packages :
     ensure => installed,
   }
